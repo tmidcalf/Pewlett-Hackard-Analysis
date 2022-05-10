@@ -27,21 +27,41 @@ CREATE TABLE dept_manager (
 );
 
 CREATE TABLE salaries (
-  emp_no INT NOT NULL,
-  salary INT NOT NULL,
-  from_date DATE NOT NULL,
-  to_date DATE NOT NULL,
-  FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
-  PRIMARY KEY (emp_no)
+  	emp_no INT NOT NULL,
+  	salary INT NOT NULL,
+  	from_date DATE NOT NULL,
+  	to_date DATE NOT NULL,
+  	FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
+  	PRIMARY KEY (emp_no)
 );
 
+
+-- Drop table if exists
+DROP TABLE titles CASCADE;
 CREATE TABLE titles (
-  emp_no INT NOT NULL,
-  title VARCHAR(40) NOT NULL,
-  from_date DATE NOT NULL,
-  to_date DATE NOT NULL,
-  FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
-  PRIMARY KEY (emp_no, title)
+  	emp_no INT NOT NULL,
+  	title VARCHAR(40) NOT NULL,
+  	from_date DATE NOT NULL,
+  	to_date DATE NOT NULL,
+  	FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
+  	PRIMARY KEY (emp_no)
+);
+
+-- Drop table if exists
+DROP TABLE dept_emp;
+CREATE TABLE dept_emp (
+ 	emp_no INT NOT NULL,
+ 	dept_no VARCHAR(4) NOT NULL,
+ 	from_date DATE NOT NULL,
+ 	to_date DATE NOT NULL,
+ 	FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
+	FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
+  	PRIMARY KEY (emp_no)
 );
 
 SELECT * FROM departments;
+SELECT * FROM dept_manager;
+SELECT * FROM employees;
+SELECT * FROM salaries;
+SELECT * FROM titles;
+SELECT * FROM dept_emp;
