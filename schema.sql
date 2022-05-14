@@ -1,4 +1,7 @@
 -- Creating tables for PH-EmployeeDB
+
+-- Drop table if exists
+DROP TABLE departments CASCADE;
 CREATE TABLE departments (
      dept_no VARCHAR(4) NOT NULL,
      dept_name VARCHAR(40) NOT NULL,
@@ -6,6 +9,8 @@ CREATE TABLE departments (
      UNIQUE (dept_name)
 );
 
+-- Drop table if exists
+DROP TABLE employees CASCADE;
 CREATE TABLE employees (
 	 emp_no INT NOT NULL,
      birth_date DATE NOT NULL,
@@ -16,6 +21,8 @@ CREATE TABLE employees (
      PRIMARY KEY (emp_no)
 );
 
+-- Drop table if exists
+DROP TABLE dept_manager CASCADE;
 CREATE TABLE dept_manager (
 	dept_no VARCHAR(4) NOT NULL,
     emp_no INT NOT NULL,
@@ -26,6 +33,8 @@ CREATE TABLE dept_manager (
     PRIMARY KEY (emp_no, dept_no)
 );
 
+-- Drop table if exists
+DROP TABLE salaries CASCADE;
 CREATE TABLE salaries (
   	emp_no INT NOT NULL,
   	salary INT NOT NULL,
@@ -48,7 +57,7 @@ CREATE TABLE titles (
 );
 
 -- Drop table if exists
-DROP TABLE dept_emp;
+DROP TABLE dept_emp CASCADE;
 CREATE TABLE dept_emp (
  	emp_no INT NOT NULL,
  	dept_no VARCHAR(4) NOT NULL,
